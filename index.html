@@ -19,7 +19,8 @@
 <meta name="twitter:image" content="https://rajeshmondal.in/assets/images/Rajesh.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/Rajesh.jpg" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script type="application/ld+json">
 {
@@ -113,7 +114,7 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
       <div class="hero-visual">
         <div class="hero-visual-stack">
         <figure class="portrait-frame tilt-card glow-card">
-          <img src="assets/images/Rajesh.jpg" alt="Rajesh Mondal portrait" decoding="async">
+          <img src="assets/images/Rajesh.jpg" alt="Rajesh Mondal portrait" decoding="async" fetchpriority="high" loading="eager">
         </figure>
         <div class="portrait-action-row">
           <a class="btn btn-solid portrait-btn" href="https://drive.google.com/uc?export=download&id=1hU0HHPKS5yNbMNPIfSFLPS_IMpOnCza-" target="_blank" rel="noreferrer">Download CV</a>
@@ -279,7 +280,7 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
         </article>
 
         <figure class="intro-showcase-media">
-          <img src="assets/images/education-showcase.jpg" alt="Creative showcase preview" loading="lazy">
+          <img src="assets/images/education-showcase.jpg" alt="Creative showcase preview" loading="lazy" decoding="async">
         </figure>
       </div>
     </section>
@@ -297,7 +298,7 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
             <h3>Brand Identity Presentation</h3>
             <p>Strong branding visuals presented with cleaner hierarchy, balanced spacing, and a premium showcase feel.</p>
           </div>
-          <img src="assets/images/branding-main.jpg" alt="Branding showcase" loading="lazy">
+          <img src="assets/images/branding-main.jpg" alt="Branding showcase" loading="lazy" decoding="async">
           <button class="work-link" type="button" data-modal-target="preview-modal" data-modal-title="Branding Preview" data-modal-image="assets/images/dixit.png">See Branding</button>
         </article>
 
@@ -307,7 +308,7 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
             <h3>Logo Folio</h3>
             <p>Custom logo work presented clearly so the artwork stays fully visible and never gets awkwardly cropped.</p>
           </div>
-          <img src="assets/images/logo-folio-main.jpg" alt="Logo showcase" loading="lazy">
+          <img src="assets/images/logo-folio-main.jpg" alt="Logo showcase" loading="lazy" decoding="async">
           <button class="work-link" type="button" data-modal-target="preview-modal" data-modal-title="Logo Folio Preview" data-modal-image="assets/images/logo-folio-sample.jpg">See Logo</button>
         </article>
 
@@ -317,7 +318,7 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
             <h3>Campaign Post Showcase</h3>
             <p>Creative social media visuals displayed with clean framing so the presentation feels polished and modern.</p>
           </div>
-          <img src="assets/images/social.jpg" alt="Social media showcase" loading="lazy">
+          <img src="assets/images/social.jpg" alt="Social media showcase" loading="lazy" decoding="async">
           <button class="work-link" type="button" data-modal-target="preview-modal" data-modal-title="Social Media Preview" data-modal-image="assets/images/branding-sample.jpg">See Social</button>
         </article>
 
@@ -327,7 +328,7 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
             <h3>Print Media Display</h3>
             <p>Print presentation block paired with package work so both supporting samples can open together in one clean preview.</p>
           </div>
-          <img src="assets/images/printt.png" alt="Print media showcase" loading="lazy">
+          <img src="assets/images/printt.png" alt="Print media showcase" loading="lazy" decoding="async">
           <button class="work-link" type="button" data-modal-target="preview-modal" data-modal-title="Print & Package Preview" data-modal-images="assets/images/printsample.png|assets/images/package-design-sample.jpg">See Print</button>
         </article>
 
@@ -337,7 +338,7 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
             <h3>UI UX Design Showcase</h3>
             <p>A centered UI/UX section that introduces both web design and app design directions with one clean visual presentation.</p>
           </div>
-          <img src="assets/images/uiux.png" alt="UI UX showcase" loading="lazy">
+          <img src="assets/images/uiux.png" alt="UI UX showcase" loading="lazy" decoding="async">
           <div class="work-link-row">
             <button class="work-link" type="button" data-modal-target="preview-modal" data-modal-title="Web Design Preview" data-modal-image="assets/images/web.png">See Web Design</button>
             <button class="work-link" type="button" data-modal-target="preview-modal" data-modal-title="App Design Preview" data-modal-image="assets/images/app.png">See App Design</button>
@@ -393,7 +394,7 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
 
     <footer class="section footer-visual-section">
       <figure class="footer-visual-card">
-        <img src="assets/images/about-main.jpg" alt="Footer visual placeholder" loading="lazy">
+        <img src="assets/images/about-main.jpg" alt="Footer visual placeholder" loading="lazy" decoding="async">
       </figure>
     </footer>
   </main>
@@ -405,7 +406,7 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
     <button class="image-modal-close" type="button" data-modal-close aria-label="Close image preview">Close</button>
     <p class="eyebrow" id="preview-modal-title">Preview</p>
     <figure class="image-modal-figure">
-      <img src="assets/images/logo-folio-sample.jpg" alt="Preview image" loading="lazy">
+      <img src="assets/images/logo-folio-sample.jpg" alt="Preview image" loading="lazy" decoding="async">
     </figure>
     <div class="image-modal-gallery" hidden></div>
   </div>
