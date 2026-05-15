@@ -9,6 +9,7 @@
   --accent: #d7a95f;
   --accent-soft: rgba(215, 169, 95, 0.16);
   --accent-glow: rgba(215, 169, 95, 0.24);
+  --accent-soft-lux: #c89b58;
   --radius-xl: 34px;
   --radius-lg: 26px;
   --radius-md: 20px;
@@ -38,6 +39,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  overscroll-behavior-y: none;
   --scroll-progress: 0%;
 }
 
@@ -86,7 +88,7 @@ a {
   border: 1px solid var(--line);
   border-radius: 999px;
   background: rgba(10, 11, 16, 0.78);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(14px);
   box-shadow: var(--shadow);
   transform: translateX(-50%);
   transform-origin: left top;
@@ -1299,13 +1301,14 @@ main {
 
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.56s var(--ease), transform 0.56s var(--ease);
+  transform: translate3d(0, 16px, 0);
+  transition: opacity 0.42s var(--ease), transform 0.42s var(--ease);
+  will-change: opacity, transform;
 }
 
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .tilt-card {
@@ -1400,6 +1403,22 @@ main {
   .section {
     padding: 24px;
   }
+
+  body::before,
+  .hero::before,
+  .section::before,
+  .portrait-frame::after,
+  .glow-card::after {
+    opacity: 0.45;
+    filter: none;
+  }
+
+  .hero,
+  .section,
+  .site-header,
+  .image-modal-panel {
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+  }
 }
 
 @media (max-width: 640px) {
@@ -1415,13 +1434,24 @@ main {
   .site-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
-    padding: 16px;
+    gap: 12px;
+    padding: 14px;
   }
 
   .brand {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .site-nav {
+    gap: 6px;
+    padding-bottom: 6px;
+  }
+
+  .site-nav a {
+    min-height: 38px;
+    padding: 10px 12px;
+    letter-spacing: 0.12em;
   }
 
   .hero,
@@ -1435,6 +1465,13 @@ main {
 
   .hero h1 {
     font-size: clamp(3rem, 16vw, 4.9rem);
+  }
+
+  .hero-text {
+    margin-top: 16px;
+    line-height: 1.75;
+    max-width: 36ch;
+    text-wrap: pretty;
   }
 
   .hero-actions,
@@ -1483,6 +1520,79 @@ main {
     padding: 18px;
   }
 
+  .education-showcase-grid,
+  .skills-grid-board {
+    gap: 12px;
+  }
+
+  .education-feature-card {
+    min-height: 0;
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .education-preview {
+    max-width: 100%;
+    line-height: 1.65;
+    opacity: 0.82;
+  }
+
+  .education-details {
+    position: static;
+    min-height: 0;
+    padding: 8px 0 0 18px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .education-details::before,
+  .education-details p {
+    opacity: 1;
+    transform: none;
+  }
+
+  .education-interactive-card:hover .education-preview,
+  .education-interactive-card:focus-visible .education-preview,
+  .education-interactive-card.is-open .education-preview {
+    opacity: 1;
+    transform: none;
+  }
+
+  .skills-panel {
+    padding: 16px;
+    border-radius: 20px;
+    gap: 14px;
+  }
+
+  .skills-panel-head h3 {
+    font-size: 1.5rem;
+  }
+
+  .skill-meter-list {
+    gap: 10px;
+  }
+
+  .skill-meter-top strong {
+    font-size: 0.9rem;
+  }
+
+  .skill-meter-top span {
+    color: #d1b183;
+    font-size: 0.67rem;
+    letter-spacing: 0.11em;
+  }
+
+  .skill-meter-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  .skill-meter-bar span {
+    background: linear-gradient(90deg, rgba(226, 196, 150, 0.9), var(--accent-soft-lux));
+    box-shadow: 0 0 8px rgba(200, 155, 88, 0.12);
+  }
+
   .footer-visual-card img {
     min-height: 240px;
   }
@@ -1505,7 +1615,7 @@ main {
   }
 
   .image-modal-panel {
-    padding: 18px;
+    padding: 16px;
     border-radius: 22px;
   }
 
@@ -1520,7 +1630,7 @@ main {
   }
 
   .site-header {
-    padding: 14px;
+    padding: 12px;
     border-radius: 24px;
   }
 
@@ -1549,7 +1659,25 @@ main {
   }
 
   .section {
-    padding: 18px;
+    padding: 16px;
+  }
+
+  .hero {
+    padding: 24px 16px;
+  }
+
+  .hero-skills span {
+    min-height: 34px;
+    padding: 7px 10px;
+  }
+
+  .education-details p {
+    font-size: 0.94rem;
+    line-height: 1.5;
+  }
+
+  .image-modal-backdrop {
+    backdrop-filter: blur(6px);
   }
 }
 

@@ -13,6 +13,7 @@ const modalGallery = document.querySelector("#preview-modal .image-modal-gallery
 const educationSound = document.getElementById("education-sound") || new Audio("assets/images/open.mp3");
 const clickSound = document.getElementById("click-sound") || new Audio("assets/images/click.mp3");
 const hoverCapable = window.matchMedia("(hover: hover)").matches;
+const isMobileViewport = window.matchMedia("(max-width: 640px)").matches;
 const modalAssetCache = new Map();
 let ticking = false;
 let audioUnlocked = false;
@@ -106,6 +107,9 @@ const closeEducationCards = () => {
 };
 
 const openEducationCard = (card, shouldPlaySound = false) => {
+  if (isMobileViewport) {
+    return;
+  }
   if (card.classList.contains("is-open")) {
     return;
   }
@@ -235,10 +239,14 @@ const openModal = modalId => {
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+  window.requestAnimationFrame(() => {
+    modal.classList.add("is-ready");
+  });
 };
 
 const closeModal = modal => {
   activeModalRequest += 1;
+  modal.classList.remove("is-ready");
   modal.classList.remove("is-open");
   modal.classList.remove("is-loading");
   modal.setAttribute("aria-hidden", "true");
