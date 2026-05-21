@@ -1,8 +1,9 @@
-const revealItems = document.querySelectorAll(".reveal");
+const root = document.documentElement;
+const revealItems = [...document.querySelectorAll(".reveal")];
 const navLinks = document.querySelectorAll(".site-nav a");
 const sections = [...document.querySelectorAll("main section[id]")];
 const header = document.querySelector(".site-header");
-const educationCards = document.querySelectorAll(".education-interactive-card");
+const educationCards = [...document.querySelectorAll(".education-interactive-card")];
 const clickSoundTargets = document.querySelectorAll(".btn, .work-link, .certificate-action, .image-modal-close");
 const modalTriggers = document.querySelectorAll("[data-modal-target]");
 const modalCloseTriggers = document.querySelectorAll("[data-modal-close]");
@@ -13,10 +14,20 @@ const modalGallery = document.querySelector("#preview-modal .image-modal-gallery
 const educationSound = document.getElementById("education-sound") || new Audio("assets/images/open.mp3");
 const clickSound = document.getElementById("click-sound") || new Audio("assets/images/click.mp3");
 const hoverCapable = window.matchMedia("(hover: hover)").matches;
+const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+const lowPowerDevice = Boolean(
+  coarsePointer ||
+  (navigator.deviceMemory && navigator.deviceMemory <= 4) ||
+  (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
+  (navigator.connection && navigator.connection.saveData)
+);
 const modalAssetCache = new Map();
 let ticking = false;
 let audioUnlocked = false;
 let activeModalRequest = 0;
+let lastModalTrigger = null;
+
+root.classList.toggle("is-low-power", lowPowerDevice);
 
 educationSound.preload = "auto";
 clickSound.preload = "auto";
@@ -102,11 +113,11 @@ const warmModalAssets = () => {
 };
 
 const closeEducationCards = () => {
-  educationCards.forEach(item => item.classList.remove("is-open"));
+  educationCards.forEach(card => card.classList.remove("is-open"));
 };
 
 const openEducationCard = (card, shouldPlaySound = false) => {
-  if (card.classList.contains("is-open")) {
+  if (!card) {
     return;
   }
 
@@ -121,14 +132,17 @@ const openEducationCard = (card, shouldPlaySound = false) => {
 const revealObserver = new IntersectionObserver(
   entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
+      if (!entry.isIntersecting) {
+        return;
       }
+
+      entry.target.classList.add("is-visible");
+      revealObserver.unobserve(entry.target);
     });
   },
   {
-    threshold: 0.16,
-    rootMargin: "0px 0px -10% 0px"
+    threshold: 0.14,
+    rootMargin: "0px 0px -8% 0px"
   }
 );
 
@@ -158,6 +172,10 @@ const setActiveLink = () => {
 };
 
 const syncHeader = () => {
+  if (!header) {
+    return;
+  }
+
   header.classList.remove("is-scrolled");
 };
 
@@ -182,6 +200,10 @@ educationCards.forEach(card => {
     card.addEventListener("pointerenter", () => {
       openEducationCard(card, audioUnlocked);
     });
+
+    card.addEventListener("pointerleave", () => {
+      card.classList.remove("is-open");
+    });
   }
 
   card.addEventListener("pointerdown", unlockAudio, { passive: true });
@@ -191,6 +213,11 @@ educationCards.forEach(card => {
 
     if (!isOpen) {
       openEducationCard(card, !hoverCapable);
+      return;
+    }
+
+    if (hoverCapable) {
+      card.classList.remove("is-open");
       return;
     }
 
@@ -229,20 +256,31 @@ clickSoundTargets.forEach(target => {
 const openModal = modalId => {
   const modal = document.getElementById(modalId);
   if (!modal) {
-    return;
+    return null;
   }
 
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+  document.body.classList.add("modal-open");
+
+  window.requestAnimationFrame(() => {
+    modal.classList.add("is-ready");
+  });
+
+  return modal;
 };
 
 const closeModal = modal => {
   activeModalRequest += 1;
+  modal.classList.remove("is-ready");
   modal.classList.remove("is-open");
   modal.classList.remove("is-loading");
   modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
+  document.body.classList.remove("modal-open");
+
+  if (lastModalTrigger instanceof HTMLElement) {
+    lastModalTrigger.focus({ preventScroll: true });
+  }
 };
 
 const setModalLoading = (modal, isLoading) => {
@@ -267,19 +305,19 @@ const resetModalContent = () => {
 
 modalTriggers.forEach(trigger => {
   trigger.addEventListener("click", async () => {
-    const modal = document.getElementById(trigger.dataset.modalTarget);
+    const modal = openModal(trigger.dataset.modalTarget);
     if (!modal) {
       return;
     }
 
     const requestId = ++activeModalRequest;
+    lastModalTrigger = trigger;
 
     if (modalTitle && trigger.dataset.modalTitle) {
       modalTitle.textContent = trigger.dataset.modalTitle;
     }
 
     resetModalContent();
-    openModal(trigger.dataset.modalTarget);
     setModalLoading(modal, true);
 
     if (modalImage && trigger.dataset.modalImages) {
@@ -301,6 +339,7 @@ modalTriggers.forEach(trigger => {
           image.src = src;
           image.alt = `${trigger.dataset.modalTitle || "Preview"} ${index + 1}`;
           image.loading = "lazy";
+          image.decoding = "async";
           figure.appendChild(image);
           modalGallery.appendChild(figure);
         });
@@ -315,6 +354,7 @@ modalTriggers.forEach(trigger => {
 
       modalImage.src = trigger.dataset.modalImage;
       modalImage.alt = trigger.dataset.modalTitle || "Preview image";
+      modalImage.decoding = "async";
       if (modalFigure) {
         modalFigure.hidden = false;
       }
@@ -348,6 +388,10 @@ window.addEventListener("scroll", requestSync, { passive: true });
 window.addEventListener("resize", requestSync, { passive: true });
 window.addEventListener("load", () => {
   syncUI();
+
+  if (!hoverCapable && educationCards.length) {
+    openEducationCard(educationCards[0]);
+  }
 
   if ("requestIdleCallback" in window) {
     window.requestIdleCallback(warmModalAssets, { timeout: 1200 });

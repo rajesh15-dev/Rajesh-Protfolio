@@ -19,7 +19,8 @@
 <meta name="twitter:image" content="https://rajeshmondal.in/assets/images/Rajesh.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/Rajesh.jpg" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script type="application/ld+json">
 {
@@ -93,12 +94,26 @@
         <p class="eyebrow">Personal Portfolio</p>
         <h1>Rajesh Mondal</h1>
         <p class="hero-role">Graphic &amp; UI/UX Designer</p>
-        <p class="hero-text">I’m Rajesh Mondal
-B.Tech 1st Year student passionate about graphic design and video editing with 2 years of creative</p>
+        <p class="hero-text">I'm Rajesh Mondal, a B.Tech CSE student building a premium portfolio across graphic design, UI/UX, branding, and polished digital presentation.</p>
 
         <div class="hero-actions">
           <a class="btn btn-solid" href="#work">View Work</a>
           <a class="btn btn-outline" href="#skills">See Skills</a>
+        </div>
+
+        <div class="hero-metrics" aria-label="Portfolio highlights">
+          <article>
+            <strong>2+</strong>
+            <span>Years of creative practice</span>
+          </article>
+          <article>
+            <strong>Multi</strong>
+            <span>Brand, UI, and digital design focus</span>
+          </article>
+          <article>
+            <strong>Fast</strong>
+            <span>Sharper workflow from concept to showcase</span>
+          </article>
         </div>
 
         <div class="hero-skills">
@@ -112,13 +127,13 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
 
       <div class="hero-visual">
         <div class="hero-visual-stack">
-        <figure class="portrait-frame tilt-card glow-card">
-          <img src="assets/images/Rajesh.jpg" alt="Rajesh Mondal portrait" decoding="async">
-        </figure>
-        <div class="portrait-action-row">
-          <a class="btn btn-solid portrait-btn" href="https://drive.google.com/uc?export=download&id=1hU0HHPKS5yNbMNPIfSFLPS_IMpOnCza-" target="_blank" rel="noreferrer">Download CV</a>
-          <a class="btn btn-outline portrait-btn" href="mailto:rajeshmondal81010@gmail.com">Contact</a>
-        </div>
+          <figure class="portrait-frame tilt-card glow-card">
+            <img src="assets/images/Rajesh.jpg" alt="Rajesh Mondal portrait" width="1024" height="1536" decoding="async" fetchpriority="high">
+          </figure>
+          <div class="portrait-action-row">
+            <a class="btn btn-solid portrait-btn" href="https://drive.google.com/uc?export=download&id=1hU0HHPKS5yNbMNPIfSFLPS_IMpOnCza-" target="_blank" rel="noreferrer">Download CV</a>
+            <a class="btn btn-outline portrait-btn" href="mailto:rajeshmondal81010@gmail.com">Contact</a>
+          </div>
         </div>
       </div>
     </section>
@@ -126,14 +141,16 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
     <section class="section reveal education-showcase-section" id="education">
       <div class="section-head">
         <p class="eyebrow">Education</p>
-        <h2>Academic profile </h2>
+        <h2>Academic story with cleaner rhythm.</h2>
+        <p class="section-intro">Three milestones shaped into a more premium, easier-to-scan timeline that stays balanced on both mobile and desktop.</p>
       </div>
 
       <div class="education-showcase-grid">
-        <article class="education-feature-card education-interactive-card" tabindex="0">
+        <article class="education-feature-card education-interactive-card education-secondary" tabindex="0">
           <span class="education-step">01</span>
+          <span class="education-card-tag">Foundation</span>
           <h3>Secondary</h3>
-          <p class="education-preview">Move cursor or tap to view school, year, and marks details.</p>
+          <p class="education-preview">School foundation built through disciplined academic focus and strong early performance.</p>
           <div class="education-details">
             <p><strong>School</strong> CSV Vidyapith</p>
             <p><strong>Year</strong> 2014 - 2023</p>
@@ -141,10 +158,11 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
           </div>
         </article>
 
-        <article class="education-feature-card education-interactive-card" tabindex="0">
+        <article class="education-feature-card education-interactive-card education-higher" tabindex="0">
           <span class="education-step">02</span>
+          <span class="education-card-tag">Higher Studies</span>
           <h3>Higher Secondary</h3>
-          <p class="education-preview">Move cursor or tap to view school, year, and marks details.</p>
+          <p class="education-preview">Science-track progression with sharper preparation, better clarity, and stronger direction.</p>
           <div class="education-details">
             <p><strong>School</strong> BHHS High School</p>
             <p><strong>Year</strong> 2023 - 2025</p>
@@ -152,10 +170,11 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
           </div>
         </article>
 
-        <article class="education-feature-card education-interactive-card" tabindex="0">
+        <article class="education-feature-card education-interactive-card education-degree" tabindex="0">
           <span class="education-step">03</span>
+          <span class="education-card-tag">Current Focus</span>
           <h3>B.Tech CSE (Data Science)</h3>
-          <p class="education-preview">Move cursor or tap to view current year and CGPA details.</p>
+          <p class="education-preview">A current technical path combining creative thinking with structured problem solving.</p>
           <div class="education-details">
             <p><strong>Institute</strong> University of Engineering & Management</p>
             <p><strong>Current Year</strong> 1st Year</p>
@@ -168,7 +187,8 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
     <section class="section reveal skills-showcase-section" id="skills">
       <div class="section-head">
         <p class="eyebrow">Skills</p>
-        <h2>Visual bridge before the work begins.</h2>
+        <h2>Tool mastery, presented with more clarity.</h2>
+        <p class="section-intro">Each lane now carries its own color mood, cleaner hierarchy, and calmer meter styling for a more advanced portfolio feel.</p>
       </div>
 
       <div class="skills-grid-board">
@@ -176,6 +196,13 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
           <div class="skills-panel-head">
             <span class="intro-showcase-tag">Graphic Design</span>
             <h3>Creative design tools</h3>
+            <p>Brand visuals, campaign assets, and polished presentation work built for stronger first impressions.</p>
+          </div>
+
+          <div class="skills-pill-row">
+            <span>Branding</span>
+            <span>Social Media</span>
+            <span>Marketing Visuals</span>
           </div>
 
           <div class="skill-meter-list">
@@ -206,6 +233,13 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
           <div class="skills-panel-head">
             <span class="intro-showcase-tag">Programming</span>
             <h3>Core language knowledge</h3>
+            <p>Practical coding fundamentals supporting logic, automation, and cleaner digital execution.</p>
+          </div>
+
+          <div class="skills-pill-row">
+            <span>Logic</span>
+            <span>Automation</span>
+            <span>Problem Solving</span>
           </div>
 
           <div class="skill-meter-list">
@@ -224,6 +258,13 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
           <div class="skills-panel-head">
             <span class="intro-showcase-tag">UI UX Design</span>
             <h3>Interface and experience tools</h3>
+            <p>Interface composition, responsive thinking, and cleaner experience mapping for modern products.</p>
+          </div>
+
+          <div class="skills-pill-row">
+            <span>Wireframes</span>
+            <span>Flows</span>
+            <span>Responsive UI</span>
           </div>
 
           <div class="skill-meter-list">
@@ -268,7 +309,7 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
     <section class="section reveal intro-showcase-section" id="featured-intro">
       <div class="section-head">
         <p class="eyebrow">Featured Introduction</p>
-        <h2></h2>
+        <h2>A visual pause before the main showcase.</h2>
       </div>
 
       <div class="intro-showcase-grid">
@@ -279,7 +320,7 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
         </article>
 
         <figure class="intro-showcase-media">
-          <img src="assets/images/education-showcase.jpg" alt="Creative showcase preview" loading="lazy">
+          <img src="assets/images/education-showcase.jpg" alt="Creative showcase preview" loading="lazy" decoding="async" width="1588" height="844">
         </figure>
       </div>
     </section>
@@ -297,7 +338,7 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
             <h3>Brand Identity Presentation</h3>
             <p>Strong branding visuals presented with cleaner hierarchy, balanced spacing, and a premium showcase feel.</p>
           </div>
-          <img src="assets/images/branding-main.jpg" alt="Branding showcase" loading="lazy">
+          <img src="assets/images/branding-main.jpg" alt="Branding showcase" loading="lazy" decoding="async" width="1561" height="885">
           <button class="work-link" type="button" data-modal-target="preview-modal" data-modal-title="Branding Preview" data-modal-image="assets/images/dixit.png">See Branding</button>
         </article>
 
@@ -307,7 +348,7 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
             <h3>Logo Folio</h3>
             <p>Custom logo work presented clearly so the artwork stays fully visible and never gets awkwardly cropped.</p>
           </div>
-          <img src="assets/images/logo-folio-main.jpg" alt="Logo showcase" loading="lazy">
+          <img src="assets/images/logo-folio-main.jpg" alt="Logo showcase" loading="lazy" decoding="async" width="1580" height="810">
           <button class="work-link" type="button" data-modal-target="preview-modal" data-modal-title="Logo Folio Preview" data-modal-image="assets/images/logo-folio-sample.jpg">See Logo</button>
         </article>
 
@@ -317,7 +358,7 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
             <h3>Campaign Post Showcase</h3>
             <p>Creative social media visuals displayed with clean framing so the presentation feels polished and modern.</p>
           </div>
-          <img src="assets/images/Social.png" alt="Social media showcase" loading="lazy">
+          <img src="assets/images/Social.png" alt="Social media showcase" loading="lazy" decoding="async" width="1586" height="819">
           <button class="work-link" type="button" data-modal-target="preview-modal" data-modal-title="Social Media Preview" data-modal-image="assets/images/branding-sample.jpg">See Social</button>
         </article>
 
@@ -327,8 +368,8 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
             <h3>Print Media Display</h3>
             <p>Print presentation block paired with package work so both supporting samples can open together in one clean preview.</p>
           </div>
-          <img src="assets/images/printt.png" alt="Print media showcase" loading="lazy">
-          <button class="work-link" type="button" data-modal-target="preview-modal" data-modal-title="Print & Package Preview" data-modal-images="assets/images/printsample.png|assets/images/package-design-sample.jpg">See Print</button>
+          <img src="assets/images/printt.png" alt="Print media showcase" loading="lazy" decoding="async" width="582" height="285">
+          <button class="work-link" type="button" data-modal-target="preview-modal" data-modal-title="Print &amp; Package Preview" data-modal-images="assets/images/printsample.png|assets/images/package-design-sample.jpg">See Print</button>
         </article>
 
         <article class="work-card work-card-uiux tilt-card glow-card">
@@ -337,7 +378,7 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
             <h3>UI UX Design Showcase</h3>
             <p>A centered UI/UX section that introduces both web design and app design directions with one clean visual presentation.</p>
           </div>
-          <img src="assets/images/uiux.png" alt="UI UX showcase" loading="lazy">
+          <img src="assets/images/uiux.png" alt="UI UX showcase" loading="lazy" decoding="async" width="583" height="312">
           <div class="work-link-row">
             <button class="work-link" type="button" data-modal-target="preview-modal" data-modal-title="Web Design Preview" data-modal-image="assets/images/web.png">See Web Design</button>
             <button class="work-link" type="button" data-modal-target="preview-modal" data-modal-title="App Design Preview" data-modal-image="assets/images/app.png">See App Design</button>
@@ -393,19 +434,19 @@ B.Tech 1st Year student passionate about graphic design and video editing with 2
 
     <footer class="section footer-visual-section">
       <figure class="footer-visual-card">
-        <img src="assets/images/about-main.jpg" alt="Footer visual placeholder" loading="lazy">
+        <img src="assets/images/about-main.jpg" alt="Footer visual placeholder" loading="lazy" decoding="async" width="1651" height="930">
       </figure>
     </footer>
   </main>
 </div>
 
-<div class="image-modal" id="preview-modal" aria-hidden="true" role="dialog" aria-labelledby="preview-modal-title">
+<div class="image-modal" id="preview-modal" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="preview-modal-title">
   <div class="image-modal-backdrop" data-modal-close></div>
   <div class="image-modal-panel">
     <button class="image-modal-close" type="button" data-modal-close aria-label="Close image preview">Close</button>
     <p class="eyebrow" id="preview-modal-title">Preview</p>
     <figure class="image-modal-figure">
-      <img src="assets/images/logo-folio-sample.jpg" alt="Preview image" loading="lazy">
+      <img src="assets/images/logo-folio-sample.jpg" alt="Preview image" loading="lazy" decoding="async" width="1536" height="1024">
     </figure>
     <div class="image-modal-gallery" hidden></div>
   </div>
